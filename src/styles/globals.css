@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-gothic-950 text-gray-100;
+  }
+}
+
+@layer components {
+  .gothic-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gothic-heading {
+    @apply font-gothic text-4xl md:text-5xl lg:text-6xl font-bold text-gothic-100;
+  }
+
+  .gothic-button {
+    @apply px-4 py-2 bg-gothic-800 hover:bg-gothic-700 text-gothic-100 rounded-md transition-colors duration-200;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gothic-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gothic-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gothic-600;
+}

@@ -1,0 +1,5 @@
+{
+  "/killers/[id]/page": "app/killers/[id]/page.js",
+  "/legends/[id]/page": "app/legends/[id]/page.js",
+  "/legends/page": "app/legends/page.js"
+}
