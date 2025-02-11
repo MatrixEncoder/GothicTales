@@ -18,8 +18,11 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
+<<<<<<< HEAD
 .env.staging.local
 .env.staging
+=======
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
 
 # Logs
 npm-debug.log*

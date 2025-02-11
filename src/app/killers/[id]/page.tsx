@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ClientPage from './ClientPage';
@@ -21,6 +22,18 @@ export interface KillerProfile {
 }
 
 const killerProfiles: Record<string, KillerProfile> = {
+=======
+'use client';
+
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import PageTransition from '@/components/PageTransition';
+import HistoricalImage from '@/components/HistoricalImage';
+
+// This would typically come from a database, but we'll hardcode it for now
+const killerProfiles = {
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
   'jack-the-ripper': {
     name: 'Jack the Ripper',
     period: '1888',
@@ -136,7 +149,11 @@ const killerProfiles: Record<string, KillerProfile> = {
         credit: 'Unsplash'
       },
       {
+<<<<<<< HEAD
         src: 'https://images.unsplash.com/photo-1502877338535-6e5fd01988ec',
+=======
+        src: 'https://images.unsplash.com/photo-1502877338535-766e1452684a',
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
         alt: 'Vintage Car',
         caption: 'A Volkswagen Beetle similar to Bundy\'s',
         year: '2020',
@@ -223,6 +240,7 @@ const killerProfiles: Record<string, KillerProfile> = {
   }
 };
 
+<<<<<<< HEAD
 export async function generateStaticParams() {
   return Object.keys(killerProfiles).map((id) => ({ id }));
 }
@@ -245,5 +263,128 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <ClientPage killer={killer} />
+=======
+export default function KillerProfilePage({ params }: { params: { id: string } }) {
+  const router = useRouter();
+  const profile = killerProfiles[params.id as keyof typeof killerProfiles];
+
+  useEffect(() => {
+    if (!profile) {
+      router.push('/killers');
+    }
+  }, [profile, router]);
+
+  if (!profile) {
+    return null;
+  }
+
+  return (
+    <PageTransition>
+      <main className="min-h-screen gothic-container py-24">
+        <article className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="gothic-heading text-center mb-4">{profile.name}</h1>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-gothic-400 mb-8">
+              <span>{profile.period}</span>
+              <span>•</span>
+              <span>{profile.location}</span>
+              <span>•</span>
+              <span>Victims: {profile.victims}</span>
+              <span>•</span>
+              <span className="px-3 py-1 rounded-full bg-red-950/30 text-red-400 border border-red-900/30">
+                {profile.status}
+              </span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="prose prose-invert prose-red max-w-none"
+          >
+            {profile.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="text-gothic-300 mb-4">
+                {paragraph.trim()}
+              </p>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mt-12"
+          >
+            <h2 className="text-2xl font-gothic text-red-500 mb-6">Historical Images</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {profile.images.map((image, index) => (
+                <HistoricalImage key={index} {...image} />
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-12 pt-8 border-t border-red-900/20"
+          >
+            <h2 className="text-2xl font-gothic text-red-500 mb-4">Major Theories</h2>
+            <ul className="grid md:grid-cols-2 gap-4">
+              {profile.theories.map((theory, index) => (
+                <li
+                  key={index}
+                  className="bg-gothic-900/50 p-4 rounded-lg border border-red-900/20"
+                >
+                  <span className="text-gothic-300">{theory}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {profile.relatedKillers && profile.relatedKillers.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 pt-8 border-t border-red-900/20"
+            >
+              <h2 className="text-2xl font-gothic text-red-500 mb-4">Related Profiles</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {profile.relatedKillers.map((relatedId) => {
+                  const relatedProfile = killerProfiles[relatedId as keyof typeof killerProfiles];
+                  return (
+                    <motion.div
+                      key={relatedId}
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-gothic-900/50 p-6 rounded-lg border border-red-900/20 cursor-pointer"
+                      onClick={() => router.push(`/killers/${relatedId}`)}
+                    >
+                      <h3 className="text-xl font-gothic text-red-500 mb-2">
+                        {relatedProfile.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-gothic-400 mb-2">
+                        <span>{relatedProfile.period}</span>
+                        <span>•</span>
+                        <span>{relatedProfile.status}</span>
+                      </div>
+                      <p className="text-gothic-400 text-sm">
+                        {relatedProfile.content.split('\n')[0].slice(0, 100)}...
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </article>
+      </main>
+    </PageTransition>
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
   );
 }

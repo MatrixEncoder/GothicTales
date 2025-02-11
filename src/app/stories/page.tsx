@@ -2,7 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+<<<<<<< HEAD
 import Image from 'next/image';
+=======
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
 import PageTransition from '@/components/PageTransition';
 
 const stories = [
@@ -51,6 +54,7 @@ const stories = [
 export default function Stories() {
   return (
     <PageTransition>
+<<<<<<< HEAD
       <div className="relative min-h-screen">
         <Image 
           src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017" 
@@ -150,6 +154,52 @@ export default function Stories() {
           </div>
         </div>
       </div>
+=======
+      <main className="min-h-screen gothic-container py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="gothic-heading text-center mb-4">Horror Stories</h1>
+          <p className="text-center text-gothic-300 text-lg mb-12">
+            Explore our collection of true horror tales and supernatural encounters
+          </p>
+        </motion.div>
+
+        <div className="grid gap-8">
+          {stories.map((story, index) => (
+            <motion.article
+              key={story.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-gothic-900/50 p-6 rounded-lg border border-red-900/20 hover:border-red-900/40 transition-all group"
+            >
+              <Link href={`/stories/${story.id}`} className="block">
+                <div className="flex justify-between items-start mb-2">
+                  <h2 className="text-2xl font-gothic text-red-500 group-hover:text-red-400 transition-colors">
+                    {story.title}
+                  </h2>
+                  <div className="flex items-center space-x-4 text-sm text-gothic-400">
+                    <span>{story.category}</span>
+                    <span>•</span>
+                    <span>{story.readTime}</span>
+                  </div>
+                </div>
+                <p className="text-gothic-300 mb-4">{story.excerpt}</p>
+                <div className="flex items-center text-sm text-gothic-400">
+                  <span>{story.date}</span>
+                  <span className="ml-auto text-red-500 group-hover:text-red-400 transition-colors">
+                    Read More →
+                  </span>
+                </div>
+              </Link>
+            </motion.article>
+          ))}
+        </div>
+      </main>
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
     </PageTransition>
   );
 }

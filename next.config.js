@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require('dotenv').config({ path: '.env.local' });
 
 // Load environment variables
@@ -14,6 +15,17 @@ const nextConfig = {
     config.resolve.fallback = { fs: false, net: false, tls: false };
     return config;
   }
+=======
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  images: {
+    domains: ['images.unsplash.com'],
+    unoptimized: true,
+  },
+  basePath: '/GothicTales',
+  assetPrefix: '/GothicTales/',
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
 }
 
 module.exports = nextConfig

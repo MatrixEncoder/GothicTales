@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/legends/page": "app/legends/page.js",
@@ -10,3 +11,6 @@
   "/stories/[id]/page": "app/stories/[id]/page.js",
   "/killers/[id]/page": "app/killers/[id]/page.js"
 }
+=======
+{}
+>>>>>>> b4da9516081393239a60beba36b2d532c61d4551
