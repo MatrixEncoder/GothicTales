@@ -1,24 +1,45 @@
 import type { Metadata } from 'next'
-import { Crimson_Pro, Inter } from 'next/font/google'
+import { Gothic_A1, Merriweather, Inter, Creepster, Nosifer, Vampiro_One } from 'next/font/google'
 import '@/styles/globals.css'
 import Navigation from '@/components/Navigation'
 import SpookyBackground from '@/components/SpookyBackground'
-<<<<<<< HEAD
-import Jumpscare from '@/components/Jumpscare'
-=======
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
+import dynamic from 'next/dynamic'
 
-const gothic = Crimson_Pro({ 
-  subsets: ['latin'],
-  variable: '--font-gothic',
-  display: 'swap',
-})
+// Dynamically import Jumpscare with SSR disabled
+const Jumpscare = dynamic(() => import('@/components/Jumpscare'), { 
+  ssr: false 
+});
 
-const modern = Inter({
+const nosifer = Nosifer({
+  weight: '400',
   subsets: ['latin'],
-  variable: '--font-modern',
-  display: 'swap',
-})
+  variable: '--font-nosifer'
+});
+
+const creepster = Creepster({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-creepster'
+});
+
+const vampiro = Vampiro_One({
+  weight: '400',
+  subsets: ['latin'], 
+  variable: '--font-vampiro',
+  display: 'swap'
+});
+
+const gothic = Gothic_A1({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-gothic'
+});
+
+const modern = Merriweather({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-modern'
+});
 
 export const metadata: Metadata = {
   title: 'GothicTales',
@@ -32,13 +53,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${gothic.variable} ${modern.variable} font-modern antialiased bg-black min-h-screen`}>
+      <body className={`${gothic.variable} ${modern.variable} ${creepster.variable} ${nosifer.variable} ${vampiro.variable} font-modern antialiased bg-black min-h-screen`}>
         <SpookyBackground />
         <Navigation />
-<<<<<<< HEAD
         <Jumpscare />
-=======
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
         {children}
       </body>
     </html>

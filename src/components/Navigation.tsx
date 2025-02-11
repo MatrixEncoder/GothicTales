@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Stories', path: '/stories' },
-  { name: 'Serial Killers', path: '/killers' },
-  { name: 'Legends & Myths', path: '/legends' },
+  { name: 'Stories', path: '/story' },
+  { name: 'Serial Killers', path: '/killer' },
+  { name: 'Legends & Myths', path: '/legend' },
   { name: 'Submit', path: '/submit' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },

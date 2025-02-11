@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "pages": {
     "/layout": [
       "static/chunks/webpack.js",
@@ -7,40 +6,35 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/story/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/story/[slug]/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/stories/page": [
+    "/story/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/stories/page.js"
+      "static/chunks/app/story/page.js"
     ],
-    "/killers/page": [
+    "/legend/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/killers/page.js"
+      "static/chunks/app/legend/page.js"
     ],
-    "/legends/page": [
+    "/legend/[slug]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/legends/page.js"
+      "static/chunks/app/legend/[slug]/page.js"
     ],
     "/submit/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/submit/page.js"
-    ],
-    "/killers/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/killers/[id]/page.js"
-    ],
-    "/killers/[id]/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/killers/[id]/layout.js"
     ],
     "/about/page": [
       "static/chunks/webpack.js",
@@ -52,10 +46,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/contact/page.js"
     ],
-    "/stories/[id]/page": [
+    "/killer/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/stories/[id]/page.js"
+      "static/chunks/app/killer/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
@@ -63,7 +57,4 @@
       "static/chunks/app/_not-found/page.js"
     ]
   }
-=======
-  "pages": {}
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
 }

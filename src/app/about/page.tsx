@@ -122,9 +122,30 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative"
+          className="relative mt-16"
         >
-          <h1 className="title-container text-center mb-2 text-6xl font-gothic tracking-wider leading-relaxed"></h1>
+          <h1 
+            className="title-container text-center mb-2 text-6xl font-gothic tracking-wider leading-relaxed absolute inset-0 z-20"
+            style={{
+              color: '#600000', 
+              textShadow: `
+                0 0 3px #8B0000,
+                0 0 5px #8B0000
+              `,
+              WebkitTextStroke: '1px #300000',
+              fontFamily: 'var(--font-nosifer)',
+              opacity: 1,
+              display: 'block',
+              position: 'relative',
+              transform: 'translateZ(0)',
+              willChange: 'opacity, transform',
+              whiteSpace: 'nowrap',
+              wordWrap: 'normal',
+              overflow: 'visible'
+            }}
+          >
+            About GothicTales
+          </h1>
           
           {/* Enhanced blood effects */}
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-2xl mx-auto">

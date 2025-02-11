@@ -10,7 +10,6 @@
     "export": "next export"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@hookform/resolvers": "^4.0.0",
     "@next/env": "^15.1.7",
     "@prisma/client": "^5.5.2",
@@ -18,41 +17,28 @@
     "clsx": "^2.0.0",
     "dotenv": "^16.4.7",
     "framer-motion": "^10.18.0",
+    "gray-matter": "^4.0.3",
     "gsap": "^3.12.2",
     "next": "^14.0.0",
     "next-auth": "^4.24.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.0",
+    "react-markdown": "^9.0.3",
     "resend": "^3.2.0",
     "tailwind-merge": "^2.0.0",
     "zod": "^3.22.4",
     "zustand": "^4.4.6"
-=======
-    "next": "^14.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "framer-motion": "^10.16.4",
-    "zustand": "^4.4.6",
-    "@prisma/client": "^5.5.2",
-    "next-auth": "^4.24.4",
-    "@tailwindcss/typography": "^0.5.10",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
-    "gsap": "^3.12.2"
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
   },
   "devDependencies": {
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.33",
-<<<<<<< HEAD
     "@types/react-dom": "^18.3.5",
-=======
-    "@types/react-dom": "^18.2.14",
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.52.0",
-    "eslint-config-next": "14.0.0",
+    "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.31",
     "prisma": "^5.5.2",
     "tailwindcss": "^3.3.5",

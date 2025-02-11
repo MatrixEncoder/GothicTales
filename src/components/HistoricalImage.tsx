@@ -6,7 +6,7 @@ import { useState } from 'react';
 interface HistoricalImageProps {
   src: string;
   alt: string;
-  caption: string;
+  caption?: string;
   year?: string;
   credit?: string;
 }
@@ -39,7 +39,7 @@ export default function HistoricalImage({ src, alt, caption, year, credit }: His
         )}
       </div>
       <figcaption className="mt-4 text-sm">
-        <p className="text-gothic-300">{caption}</p>
+        {caption && <p className="text-gothic-300">{caption}</p>}
         <div className="flex items-center gap-2 mt-2 text-gothic-400 text-xs">
           {year && <span>{year}</span>}
           {year && credit && <span>•</span>}

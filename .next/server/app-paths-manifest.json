@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/legends/page": "app/legends/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/submit/page": "app/submit/page.js",
-  "/stories/page": "app/stories/page.js",
+  "/legend/page": "app/legend/page.js",
+  "/legend/[slug]/page": "app/legend/[slug]/page.js",
   "/page": "app/page.js",
-  "/killers/page": "app/killers/page.js",
+  "/story/[slug]/page": "app/story/[slug]/page.js",
+  "/killer/page": "app/killer/page.js",
+  "/story/page": "app/story/page.js",
+  "/contact/page": "app/contact/page.js",
   "/about/page": "app/about/page.js",
-  "/stories/[id]/page": "app/stories/[id]/page.js",
-  "/killers/[id]/page": "app/killers/[id]/page.js"
+  "/submit/page": "app/submit/page.js"
 }
-=======
-{}
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551

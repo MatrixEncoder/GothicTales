@@ -94,10 +94,60 @@
   }
 
   body {
-    @apply bg-black text-gray-300;
-    font-family: 'Nosifer', sans-serif;
+    @apply text-gothic-300;
+    font-family: 'var(--font-nosifer)', sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    text-shadow: 0 0 2px rgba(255,0,0,0.3);
     scrollbar-width: thin;
     scrollbar-color: rgba(220, 210, 190, 0.7) rgba(20, 10, 5, 0.8);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'var(--font-nosifer)', sans-serif;
+    @apply text-red-500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 
+      0 0 3px rgba(139,0,0,0.5),
+      1px 1px 2px rgba(0,0,0,0.7);
+    transform: skew(-2deg);
+  }
+
+  p, span, div {
+    font-family: 'var(--font-creepster)', cursive;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 1px rgba(139,0,0,0.3);
+    line-height: 1.7;
+    word-spacing: 0.1em;
+    transform: skew(-1deg);
+    opacity: 0.9;
+  }
+
+  a {
+    @apply text-red-600 hover:text-red-400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 2px rgba(255,0,0,0.3);
+  }
+
+  /* Creepy text animation */
+  @keyframes creepy-text-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 
+        0 0 3px rgba(139,0,0,0.5),
+        1px 1px 2px rgba(0,0,0,0.7);
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.7;
+    }
+  }
+
+  /* Apply flicker to specific elements */
+  .gothic-heading, h1, h2, h3 {
+    animation: creepy-text-flicker 3s infinite;
   }
 
   /* Creepy text effect */
@@ -107,7 +157,7 @@
       0 0 10px rgba(139, 0, 0, 0.5),
       0 0 15px rgba(139, 0, 0, 0.3);
     letter-spacing: 2px;
-    animation: text-flicker 3s infinite alternate;
+    animation: text-flicker-in-glow 3s infinite alternate;
   }
 
   /* Glitchy text effect */
@@ -139,6 +189,23 @@
     text-shadow: -2px 0 blue;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim2 5s infinite linear alternate-reverse;
+  }
+
+  @keyframes text-flicker-in-glow {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow: 
+        0 0 10px #FF0000,
+        0 0 20px #FF0000,
+        0 0 30px #FF0000,
+        0 0 40px #FF0000,
+        0 0 50px #FF0000,
+        0 0 60px #FF0000;
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.7;
+    }
   }
 
   @keyframes text-flicker {
@@ -193,6 +260,51 @@
     90% { clip: rect(50px, 9999px, 52px, 0); }
     95% { clip: rect(14px, 9999px, 33px, 0); }
     100% { clip: rect(11px, 9999px, 14px, 0); }
+  }
+
+  .blood-pulse {
+    transform: scale(1);
+    opacity: 0.6;
+    background-color: rgba(139, 0, 0, 0.3);
+    animation: blood-pulse 2s infinite alternate;
+  }
+
+  @keyframes blood-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+      background-color: rgba(139, 0, 0, 0.3);
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+      background-color: rgba(139, 0, 0, 0.5);
+    }
+  }
+
+  @keyframes intense-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    20%, 24%, 55% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  /* Flickering animation removed */
+
+  /* Handwritten, slightly trembling text effect */
+  @keyframes creepy-text-tremble {
+    0%, 100% { transform: skew(-1deg) translateX(0); }
+    25% { transform: skew(-1.5deg) translateX(-1px); }
+    75% { transform: skew(-0.5deg) translateX(1px); }
+  }
+
+  .font-creepster {
+    animation: creepy-text-tremble 3s infinite;
+    font-variation-settings: 'wght' 400, 'SPAC' 100;
   }
 }
 
@@ -256,3 +368,22 @@
     jumpscare-fade 0.5s ease-in-out;
   opacity: 1;
 }
+
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 
+      0 0 10px #FF0000,
+      0 0 20px #FF0000,
+      0 0 30px #FF0000,
+      0 0 40px #FF0000;
+  }
+  100% {
+    text-shadow: 
+      0 0 20px #FF0000,
+      0 0 40px #FF0000,
+      0 0 60px #FF0000,
+      0 0 80px #FF0000;
+  }
+}
+
+/* Removed extreme glow animation */

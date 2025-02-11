@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-<<<<<<< HEAD
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { motion } from 'framer-motion';
 import { ContactSchema } from '@/lib/email';
 import PageTransition from '@/components/PageTransition';
 
@@ -54,437 +54,110 @@ export default function ContactPage() {
           : 'The void rejected your message...'
       });
     }
-=======
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import PageTransition from '@/components/PageTransition';
-
-export default function Contact() {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    storyTitle: '',
-    storyType: 'ghost',
-    storyLocation: '',
-    storyDate: '',
-    isSubmittingStory: false
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // For story submissions, send to your email with a specific subject
-    const subject = formState.isSubmittingStory 
-      ? `New Story Submission: ${formState.storyTitle}`
-      : formState.subject;
-    
-    const body = formState.isSubmittingStory
-      ? `Story Title: ${formState.storyTitle}\n` +
-        `Type: ${formState.storyType}\n` +
-        `Location: ${formState.storyLocation}\n` +
-        `Date: ${formState.storyDate}\n\n` +
-        `Story:\n${formState.message}\n\n` +
-        `Submitted by: ${formState.name} (${formState.email})`
-      : formState.message;
-
-    window.location.href = `mailto:dhawalsri77@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
   };
 
   return (
     <PageTransition>
-<<<<<<< HEAD
-      <div className="min-h-screen bg-black flex items-center justify-center px-4 py-12">
-        <div className="max-w-md w-full space-y-8 bg-black/50 p-8 rounded-xl">
-          <div className="text-center">
-            <h1 
-              className="
-                text-5xl 
-                font-['Nosifer'] 
-                text-red-900 
-                tracking-wide 
-                uppercase 
-                break-words 
-                creepy-text
-                glitch-text
-              "
-              data-text="Whispers from the Void"
-            >
-              Whispers from the Void
-            </h1>
-            <p 
-              className="
-                mt-4 
-                text-gray-400 
-                text-xl 
-                tracking-wider 
-                creepy-text
-                font-['Creepster']
-              "
-            >
-              Speak, and the darkness listens...
-            </p>
-          </div>
-          <form 
-            onSubmit={handleSubmit(onSubmit)} 
-            className="space-y-6"
-            noValidate
+      <div className="min-h-screen gothic-container py-24 relative overflow-hidden">
+        {/* Atmospheric overlay */}
+        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 pointer-events-none" />
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="max-w-2xl mx-auto"
+        >
+          <h1 
+            className="title-container text-center mb-2 text-6xl font-gothic tracking-wider leading-relaxed absolute inset-0 z-20"
+            style={{
+              color: '#800000', 
+              textShadow: `
+                0 0 5px #B22222,
+                0 0 10px #B22222
+              `,
+              WebkitTextStroke: '1px #500000',
+              fontFamily: 'var(--font-vampiro)',
+              opacity: 1,
+              display: 'block',
+              position: 'relative',
+              transform: 'translateZ(0)',
+              willChange: 'opacity, transform'
+            }}
           >
+            Contact the Darkness
+          </h1>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label 
-                htmlFor="name" 
-                className="
-                  block 
-                  text-gray-300 
-                  mb-2 
-                  creepy-text
-                  font-['Nosifer']
-                "
-              >
-                Name
+              <label htmlFor="name" className="block text-gothic-300 mb-2">
+                Your Name
               </label>
-              <input
+              <input 
                 {...register('name')}
                 id="name"
-                type="text"
-                className="
-                  w-full 
-                  bg-black/30 
-                  border 
-                  border-red-900/20 
-                  rounded 
-                  p-3 
-                  text-gray-300 
-                  focus:border-red-900/50 
-                  focus:outline-none 
-                  font-['Creepster']
-                  tracking-wider
-                  placeholder-gray-600
-                "
-                placeholder="Your Haunting Name"
+                className="w-full bg-gothic-900/50 border border-red-900/20 text-gothic-300 rounded-lg p-3"
+                placeholder="Whisper Your Name"
               />
               {errors.name && (
-                <p 
-                  className="
-                    text-red-700 
-                    text-sm 
-                    mt-1 
-                    creepy-text
-                    font-['Nosifer']
-                  "
-                >
-                  {errors.name.message}
-                </p>
+                <p className="text-red-500 mt-1">{errors.name.message}</p>
               )}
             </div>
 
             <div>
-              <label 
-                htmlFor="email" 
-                className="
-                  block 
-                  text-gray-300 
-                  mb-2 
-                  creepy-text
-                  font-['Nosifer']
-                "
-              >
-                Email
+              <label htmlFor="email" className="block text-gothic-300 mb-2">
+                Email Address
               </label>
-              <input
+              <input 
                 {...register('email')}
                 id="email"
                 type="email"
-                className="
-                  w-full 
-                  bg-black/30 
-                  border 
-                  border-red-900/20 
-                  rounded 
-                  p-3 
-                  text-gray-300 
-                  focus:border-red-900/50 
-                  focus:outline-none 
-                  font-['Creepster']
-                  tracking-wider
-                  placeholder-gray-600
-                "
-                placeholder="Email of the Damned"
+                className="w-full bg-gothic-900/50 border border-red-900/20 text-gothic-300 rounded-lg p-3"
+                placeholder="Your Portal of Communication"
               />
               {errors.email && (
-                <p 
-                  className="
-                    text-red-700 
-                    text-sm 
-                    mt-1 
-                    creepy-text
-                    font-['Nosifer']
-                  "
-                >
-                  {errors.email.message}
-                </p>
+                <p className="text-red-500 mt-1">{errors.email.message}</p>
               )}
             </div>
 
             <div>
-              <label 
-                htmlFor="message" 
-                className="
-                  block 
-                  text-gray-300 
-                  mb-2 
-                  creepy-text
-                  font-['Nosifer']
-                "
-              >
-                Message
+              <label htmlFor="message" className="block text-gothic-300 mb-2">
+                Your Dark Message
               </label>
-              <textarea
+              <textarea 
                 {...register('message')}
                 id="message"
-                rows={4}
-                className="
-                  w-full 
-                  bg-black/30 
-                  border 
-                  border-red-900/20 
-                  rounded 
-                  p-3 
-                  text-gray-300 
-                  focus:border-red-900/50 
-                  focus:outline-none 
-                  font-['Creepster']
-                  tracking-wider
-                  placeholder-gray-600
-                "
-                placeholder="Scribe Your Dark Secrets..."
-              ></textarea>
+                rows={6}
+                className="w-full bg-gothic-900/50 border border-red-900/20 text-gothic-300 rounded-lg p-3"
+                placeholder="Unleash the shadows within..."
+              />
               {errors.message && (
-                <p 
-                  className="
-                    text-red-700 
-                    text-sm 
-                    mt-1 
-                    creepy-text
-                    font-['Nosifer']
-                  "
-                >
-                  {errors.message.message}
-                </p>
+                <p className="text-red-500 mt-1">{errors.message.message}</p>
               )}
             </div>
 
             {submissionStatus && (
               <div 
-                className="
-                  p-4 
-                  rounded 
-                  bg-black/40
-                  text-gray-300
-                  creepy-text
-                  font-['Nosifer']
-                "
+                className={`p-4 rounded-lg ${
+                  submissionStatus.success 
+                    ? 'bg-green-900/50 text-green-300' 
+                    : 'bg-red-900/50 text-red-300'
+                }`}
               >
                 {submissionStatus.message}
               </div>
             )}
 
-            <button
-              type="submit"
+            <button 
+              type="submit" 
               disabled={isSubmitting}
-              className="
-                w-full 
-                bg-black/40 
-                text-gray-300 
-                py-3 
-                rounded 
-                hover:bg-black/60 
-                transition-colors 
-                disabled:opacity-50 
-                disabled:cursor-not-allowed
-                font-['Nosifer']
-                text-lg
-                tracking-wider
-                border 
-                border-red-900/20
-                hover:border-red-900/50
-                creepy-text
-              "
+              className="w-full bg-red-900/20 hover:bg-red-900/30 text-red-500 border border-red-900/40 rounded-lg py-3 transition-colors"
             >
-              {isSubmitting ? 'Summoning...' : 'Invoke Darkness'}
+              {isSubmitting ? 'Summoning Your Message...' : 'Send Dark Whispers'}
             </button>
           </form>
-        </div>
-      </div>
-=======
-      <main className="min-h-screen gothic-container py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h1 className="gothic-heading text-center mb-4">Contact Us</h1>
-          <p className="text-center text-gothic-300 text-lg mb-12">
-            Share your story or get in touch
-          </p>
-
-          <div className="flex justify-center gap-8 mb-12">
-            <Link
-              href="mailto:dhawalsri77@gmail.com"
-              className="text-gothic-300 hover:text-red-400 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </Link>
-            <Link
-              href="https://github.com/MatrixEncoder"
-              className="text-gothic-300 hover:text-red-400 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </Link>
-            <Link
-              href="https://instagram.com/illusionist__666"
-              className="text-gothic-300 hover:text-red-400 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </Link>
-          </div>
-
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
-            <div className="flex justify-end mb-6">
-              <button
-                type="button"
-                onClick={() => setFormState(prev => ({ ...prev, isSubmittingStory: !prev.isSubmittingStory }))}
-                className="text-sm text-gothic-400 hover:text-red-400 transition-colors"
-              >
-                {formState.isSubmittingStory ? 'Switch to Contact Form' : 'Submit a Story Instead'}
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={formState.name}
-                onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                value={formState.email}
-                onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
-                className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                required
-              />
-
-              {formState.isSubmittingStory ? (
-                <>
-                  <input
-                    type="text"
-                    placeholder="Story Title"
-                    value={formState.storyTitle}
-                    onChange={(e) => setFormState(prev => ({ ...prev, storyTitle: e.target.value }))}
-                    className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                    required
-                  />
-                  <div className="grid grid-cols-2 gap-4">
-                    <select
-                      value={formState.storyType}
-                      onChange={(e) => setFormState(prev => ({ ...prev, storyType: e.target.value }))}
-                      className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300"
-                      required
-                    >
-                      <option value="ghost">Ghost Story</option>
-                      <option value="urban-legend">Urban Legend</option>
-                      <option value="paranormal">Paranormal Experience</option>
-                      <option value="cryptid">Cryptid Sighting</option>
-                      <option value="other">Other</option>
-                    </select>
-                    <input
-                      type="text"
-                      placeholder="Location"
-                      value={formState.storyLocation}
-                      onChange={(e) => setFormState(prev => ({ ...prev, storyLocation: e.target.value }))}
-                      className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                      required
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="When did this happen? (e.g., Summer 2019)"
-                    value={formState.storyDate}
-                    onChange={(e) => setFormState(prev => ({ ...prev, storyDate: e.target.value }))}
-                    className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                    required
-                  />
-                </>
-              ) : (
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  value={formState.subject}
-                  onChange={(e) => setFormState(prev => ({ ...prev, subject: e.target.value }))}
-                  className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                  required
-                />
-              )}
-
-              <textarea
-                placeholder={formState.isSubmittingStory ? "Tell us your story in detail..." : "Your message..."}
-                value={formState.message}
-                onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
-                rows={6}
-                className="w-full bg-gothic-900/50 border border-red-900/20 rounded-lg p-4 text-gothic-300 placeholder-gothic-600"
-                required
-              />
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-900/20 rounded-lg p-4 transition-colors"
-            >
-              {formState.isSubmittingStory ? 'Submit Story' : 'Send Message'}
-            </motion.button>
-          </form>
-
-          {formState.isSubmittingStory && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mt-12 max-w-2xl mx-auto text-center"
-            >
-              <div className="bg-gothic-900/50 p-6 rounded-lg border border-red-900/20">
-                <h2 className="text-xl font-gothic text-red-500 mb-3">Submission Guidelines</h2>
-                <ul className="text-gothic-400 text-sm space-y-2">
-                  <li>• Your story should be a true, personal experience</li>
-                  <li>• Include as many specific details as possible (dates, locations, witnesses)</li>
-                  <li>• We may edit submissions for clarity and formatting</li>
-                  <li>• By submitting, you grant us permission to share your story on the website</li>
-                  <li>• We respect privacy - your email will never be shared publicly</li>
-                </ul>
-              </div>
-            </motion.div>
-          )}
         </motion.div>
-      </main>
->>>>>>> b4da9516081393239a60beba36b2d532c61d4551
+      </div>
     </PageTransition>
   );
 }
