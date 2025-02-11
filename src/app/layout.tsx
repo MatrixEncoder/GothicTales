@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Gothic_A1, Merriweather, Inter, Creepster, Nosifer, Vampiro_One } from 'next/font/google'
-import '@/styles/globals.css'
+import './globals.css'
 import Navigation from '@/components/Navigation'
 import SpookyBackground from '@/components/SpookyBackground'
 import dynamic from 'next/dynamic'
