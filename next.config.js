@@ -38,50 +38,6 @@ const nextConfig = {
   output: 'export',
   // Ensure all routes are statically generated
   trailingSlash: true,
-  
-  // Explicitly define routes for static export
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    const dynamicRoutes = {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-      '/contact': { page: '/contact' },
-      '/submit': { page: '/submit' },
-      '/story': { page: '/story' },
-      '/killer': { page: '/killer' },
-      '/legend': { page: '/legend' }
-    };
-
-    // Add dynamic routes for stories, killers, and legends
-    const contentDirs = [
-      path.join(dir, 'src/content/stories'),
-      path.join(dir, 'src/content/killers'),
-      path.join(dir, 'src/content/legends')
-    ];
-
-    for (const contentDir of contentDirs) {
-      if (fs.existsSync(contentDir)) {
-        const files = fs.readdirSync(contentDir)
-          .filter(file => file.endsWith('.md'));
-        
-        files.forEach(file => {
-          const slug = file.replace('.md', '');
-          const basePath = contentDir.includes('stories') ? '/story' :
-                           contentDir.includes('killers') ? '/killer' :
-                           '/legend';
-          
-          dynamicRoutes[`${basePath}/${slug}`] = { 
-            page: `${basePath}/[slug]`,
-            query: { slug }
-          };
-        });
-      }
-    }
-
-    return dynamicRoutes;
-  }
 }
 
 module.exports = nextConfig
