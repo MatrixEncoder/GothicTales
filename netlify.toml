@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Ensure all routes are handled
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Custom-Header = "Next.js Static Export"
